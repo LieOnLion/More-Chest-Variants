@@ -9,17 +9,17 @@ public enum EnumMoreChest {
       MANGROVE,
       WARPED,
       CRIMSON,
-      CHERRY,
-      DEAD,
       FIR,
-      HELLBARK,
-      JACARANDA,
-      MAGIC,
-      MAHOGANY,
-      PALM,
       REDWOOD,
+      CHERRY,
+      MAHOGANY,
+      JACARANDA,
+      PALM,
+      WILLOW,
+      DEAD,
+      MAGIC,
       UMBRAN,
-      WILLOW;
+      HELLBARK;
 
       public static final EnumMoreChest[] VALUES = values();
 }
