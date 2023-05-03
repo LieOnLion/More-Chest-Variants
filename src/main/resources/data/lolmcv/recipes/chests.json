@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tags": "lolmcv:more_chest"
+      "tag": "lolmcv:more_chest"
     }
   ],
   "result": {
