@@ -6,10 +6,16 @@ license="MIT"
 modId="lolmcv"
 version="1.0-1.19.4"
 displayName="More Chest Variants"
-logoFile="examplemod.png"
+logoFile="logo.png"
 authors="LieOnLion"
 
 description='''
+More Chest Variants adds new wood types to chests
+
+Inspiration came from, More Crafting Tables -
+https://www.curseforge.com/minecraft/mc-mods/more-crafting-tables-for-forge
+
+[Make sure to set Mod Resources above Default]
 '''
 
 [[dependencies.examplemod]]
