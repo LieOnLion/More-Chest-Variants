@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "lolmcv:spruce_chest",
+    "lolmcv:birch_chest",
+    "lolmcv:jungle_chest",
+    "lolmcv:acacia_chest",
+    "lolmcv:dark_oak_chest",
+    "lolmcv:mangrove_chest",
+    "lolmcv:cherry_chest",
+    "lolmcv:bamboo_chest",
+    "lolmcv:warped_chest",
+    "lolmcv:crimson_chest",
+    "lolmcv:fir_chest",
+    "lolmcv:redwood_chest",
+    "lolmcv:mahogany_chest",
+    "lolmcv:jacaranda_chest",
+    "lolmcv:palm_chest",
+    "lolmcv:willow_chest",
+    "lolmcv:dead_chest",
+    "lolmcv:magic_chest",
+    "lolmcv:umbran_chest",
+    "lolmcv:hellbark_chest"
+  ]
+}
