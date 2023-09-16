@@ -1,8 +1,8 @@
 package io.github.lieonlion.mcv.client;
 
 import io.github.lieonlion.mcv.MoreChestVariants;
-import io.github.lieonlion.mcv.blocks.EnumMoreChest;
-import io.github.lieonlion.mcv.tileentities.TileEntityMoreChest;
+import io.github.lieonlion.mcv.blocks.MoreChestEnum;
+import io.github.lieonlion.mcv.blocks.MoreChestBlockEntity;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
@@ -15,25 +15,25 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Locale;
 
 @OnlyIn(Dist.CLIENT)
-public class TileEntityMoreChestRenderer extends ChestRenderer<TileEntityMoreChest> {
-    public static Material[] single = new Material[EnumMoreChest.VALUES.length];
-    public static Material[] left = new Material[EnumMoreChest.VALUES.length];
-    public static Material[] right = new Material[EnumMoreChest.VALUES.length];
+public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
+    public static Material[] single = new Material[MoreChestEnum.VALUES.length];
+    public static Material[] left = new Material[MoreChestEnum.VALUES.length];
+    public static Material[] right = new Material[MoreChestEnum.VALUES.length];
 
     static {
-        for (EnumMoreChest type : EnumMoreChest.VALUES) {
+        for (MoreChestEnum type : MoreChestEnum.VALUES) {
             single[type.ordinal()] = getChestMaterial(type.name().toLowerCase(Locale.ENGLISH));
             left[type.ordinal()] = getChestMaterial(type.name().toLowerCase(Locale.ENGLISH) + "_left");
             right[type.ordinal()] = getChestMaterial(type.name().toLowerCase(Locale.ENGLISH) + "_right");
         }
     }
 
-    public TileEntityMoreChestRenderer(BlockEntityRendererProvider.Context context) {
+    public MoreChestRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    protected Material getMaterial(TileEntityMoreChest blockEntity, ChestType chestType) {
+    protected Material getMaterial(MoreChestBlockEntity blockEntity, ChestType chestType) {
         return getChestMaterial(blockEntity, chestType);
     }
 
@@ -41,7 +41,7 @@ public class TileEntityMoreChestRenderer extends ChestRenderer<TileEntityMoreChe
         return new Material(Sheets.CHEST_SHEET, new ResourceLocation(MoreChestVariants.MODID, "entity/chest/" + path));
     }
 
-    private static Material getChestMaterial(TileEntityMoreChest tile, ChestType type) {
+    private static Material getChestMaterial(MoreChestBlockEntity tile, ChestType type) {
         switch(type) {
             case LEFT:
                 return left[tile.getChestType().ordinal()];

@@ -1,10 +1,18 @@
 package io.github.lieonlion.mcv;
 
 import com.mojang.logging.LogUtils;
+import io.github.lieonlion.mcv.blocks.MoreChestEnum;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
@@ -12,16 +20,48 @@ import org.slf4j.Logger;
 public class MoreChestVariants {
     public static final String MODID = "lolmcv";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public MoreChestVariants() {
-        SCRegistry.register();
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener((BuildCreativeModeTabContentsEvent e) -> {
+    /*
+        most code for this mod is taken from DoctorFTB Stone Chest
+     */
+
+    public MoreChestVariants() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        MoreChestRegister.register();
+
+        modEventBus.addListener((BuildCreativeModeTabContentsEvent e) -> {
             if (e.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS || e.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
-                SCRegistry.ITEMS.getEntries()
+                MoreChestRegister.ITEMS.getEntries()
                         .stream()
                         .map(RegistryObject::get)
                         .forEach(e::accept);
             }
         });
+
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    /*
+        allow chests to burn
+        Thanks to DaveDuart
+    */
+
+    @SubscribeEvent
+    public void onFurnaceFuelBurnTime (FurnaceFuelBurnTimeEvent event) {
+        Item item = event.getItemStack().getItem();
+
+        if (isChestItemBurnable(item)) {
+            event.setBurnTime(300);
+        }
+    }
+    private boolean isChestItemBurnable(Item item) {
+        if (item == null) {return false;}
+
+        for (MoreChestEnum chest: MoreChestEnum.VALUES) {
+            ResourceLocation blockLocation = new ResourceLocation(MODID, chest.getId());
+            if (!chest.getCanBurn()) {continue;}
+            if (item.equals(Item.BY_BLOCK.get(ForgeRegistries.BLOCKS.getValue(blockLocation)))) {return true;}
+        }
+        return false;
     }
 }
