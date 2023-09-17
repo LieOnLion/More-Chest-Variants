@@ -44,6 +44,7 @@ public class MoreChestVariants {
     /*
         allow chests to burn
         Thanks to DaveDuart
+        Copyright (c) 2018
     */
 
     @SubscribeEvent
