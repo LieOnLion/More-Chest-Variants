@@ -23,6 +23,7 @@ public class MoreChestVariants {
 
     /*
         most code for this mod is taken from DoctorFTB Stone Chest
+        Copyright (c) 2018
      */
 
     public MoreChestVariants() {
@@ -44,7 +45,6 @@ public class MoreChestVariants {
     /*
         allow chests to burn
         Thanks to DaveDuart
-        Copyright (c) 2018
     */
 
     @SubscribeEvent
