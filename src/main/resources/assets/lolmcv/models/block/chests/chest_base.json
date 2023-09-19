@@ -4,20 +4,20 @@
 			"name": "lid",
 			"from": [1, 10, 1],
 			"to": [15, 14, 15],
-			"rotation": {"angle": 0, "axis": "y", "origin": [9, 18, 9]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10, 8]},
 			"faces": {
 				"north": {"uv": [14, 4.75, 10.5, 3.75], "texture": "#wood_type"},
 				"east": {"uv": [3.5, 4.75, 0, 3.75], "texture": "#wood_type"},
 				"south": {"uv": [7, 4.75, 3.5, 3.75], "texture": "#wood_type"},
 				"west": {"uv": [10.5, 4.75, 7, 3.75], "texture": "#wood_type"},
-				"up": {"uv": [7, 0, 10.5, 3.5], "texture": "#wood_type"}
+				"up": {"uv": [10.5, 0, 7, 3.5], "texture": "#wood_type"}
 			}
 		},
 		{
 			"name": "lock",
 			"from": [7, 7, 0],
 			"to": [9, 11, 1],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 15]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 1]},
 			"faces": {
 				"north": {"uv": [1.5, 1.25, 1, 0.25], "texture": "#wood_type"},
 				"east": {"uv": [0.5, 1.25, 0.25, 0.25], "texture": "#wood_type"},
@@ -30,7 +30,7 @@
 			"name": "base",
 			"from": [1, 0, 1],
 			"to": [15, 10, 15],
-			"rotation": {"angle": 0, "axis": "y", "origin": [9, 8, 9]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5, 8]},
 			"faces": {
 				"north": {"uv": [14, 10.75, 10.5, 8.25], "texture": "#wood_type"},
 				"east": {"uv": [10.5, 10.75, 7, 8.25], "texture": "#wood_type"},
