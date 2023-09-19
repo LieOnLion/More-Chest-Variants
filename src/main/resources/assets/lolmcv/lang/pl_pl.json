@@ -10,16 +10,5 @@
   "block.lolmcv.cherry_chest": "Wiśniowa Skrzynia",
   "block.lolmcv.bamboo_chest": "Bambusowa Skrzynia",
   "block.lolmcv.crimson_chest": "Szkarłatna Skrzynia",
-  "block.lolmcv.warped_chest": "Spaczona Skrzynia",
-
-  "block.lolmcv.fir_chest": "Jodłowa Skrzynia",
-  "block.lolmcv.redwood_chest": "Sekwojowa Skrzynia",
-  "block.lolmcv.mahogany_chest": "Mahoniowa Skrzynia",
-  "block.lolmcv.jacaranda_chest": "Jakarandowa Skrzynia",
-  "block.lolmcv.palm_chest": "Palmowa Skrzynia",
-  "block.lolmcv.willow_chest": "Wierzbowa Skrzynia",
-  "block.lolmcv.dead_chest": "Martwa Skrzynia",
-  "block.lolmcv.magic_chest": "Magiczna Skrzynia",
-  "block.lolmcv.umbran_chest": "Mroczna Skrzynia",
-  "block.lolmcv.hellbark_chest": "Piekielna Skrzynia"
+  "block.lolmcv.warped_chest": "Spaczona Skrzynia"
 }

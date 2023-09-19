@@ -10,16 +10,5 @@
   "block.lolmcv.cherry_chest": "Cherry Chest",
   "block.lolmcv.bamboo_chest": "Bamboo Chest",
   "block.lolmcv.crimson_chest": "Crimson Chest",
-  "block.lolmcv.warped_chest": "Warped Chest",
-
-  "block.lolmcv.fir_chest": "Fir Chest",
-  "block.lolmcv.redwood_chest": "RedWood Chest",
-  "block.lolmcv.mahogany_chest": "Mahogany Chest",
-  "block.lolmcv.jacaranda_chest": "Jacaranda Chest",
-  "block.lolmcv.palm_chest": "Palm Chest",
-  "block.lolmcv.willow_chest": "Willow Chest",
-  "block.lolmcv.dead_chest": "Dead Chest",
-  "block.lolmcv.magic_chest": "Magic Chest",
-  "block.lolmcv.umbran_chest": "Umbran Chest",
-  "block.lolmcv.hellbark_chest": "Hellbark Chest"
+  "block.lolmcv.warped_chest": "Warped Chest"
 }

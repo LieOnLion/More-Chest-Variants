@@ -1,6 +1,6 @@
 package io.github.lieonlion.mcv.blocks;
 
-import io.github.lieonlion.mcv.MoreChestRegister;
+import io.github.lieonlion.mcv.init.MoreChestInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,7 +13,7 @@ public class MoreChestBlockEntity extends ChestBlockEntity {
     }
 
     public MoreChestBlockEntity(MoreChestEnum chestType, BlockPos pos, BlockState state) {
-        super(MoreChestRegister.CHEST_TILE_TYPE.get(), pos, state);
+        super(MoreChestInit.chest_entity.get(), pos, state);
         this.chestType = chestType;
     }
 

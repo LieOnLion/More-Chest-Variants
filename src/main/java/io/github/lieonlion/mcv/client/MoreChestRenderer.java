@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 @OnlyIn(Dist.CLIENT)
@@ -19,6 +20,8 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
     public static Material[] single = new Material[MoreChestEnum.VALUES.length];
     public static Material[] left = new Material[MoreChestEnum.VALUES.length];
     public static Material[] right = new Material[MoreChestEnum.VALUES.length];
+    private static boolean christmas;
+    private static boolean starwarsday;
 
     static {
         for (MoreChestEnum type : MoreChestEnum.VALUES) {
@@ -30,6 +33,13 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
 
     public MoreChestRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
+        Calendar calendar = Calendar.getInstance();
+        if (calendar.get(2) + 1 == 12 && calendar.get(5) >= 24 && calendar.get(5) <= 26) {
+            christmas = true;
+        }
+        if (calendar.get(2) + 1 == 5 && calendar.get(5) >= 3 && calendar.get(5) <= 5) {
+            starwarsday = true;
+        }
     }
 
     @Override
@@ -37,19 +47,25 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
         return getChestMaterial(blockEntity, chestType);
     }
 
+    public static Material chooseMaterial(ChestType type, Material left, Material right, Material single) {
+        return switch (type) {
+            case LEFT -> left;
+            case RIGHT -> right;
+            default -> single;
+        };
+    }
+
     private static Material getChestMaterial(String path) {
         return new Material(Sheets.CHEST_SHEET, new ResourceLocation(MoreChestVariants.MODID, "entity/chest/" + path));
     }
 
-    private static Material getChestMaterial(MoreChestBlockEntity tile, ChestType type) {
-        switch(type) {
-            case LEFT:
-                return left[tile.getChestType().ordinal()];
-            case RIGHT:
-                return right[tile.getChestType().ordinal()];
-            case SINGLE:
-            default:
-                return single[tile.getChestType().ordinal()];
+    private Material getChestMaterial(MoreChestBlockEntity tile, ChestType type) {
+        if (christmas) {
+            return Sheets.chooseMaterial(tile, type, christmas);
+        } else if (starwarsday) {
+            return chooseMaterial(type, getChestMaterial("starwars_left"), getChestMaterial("starwars_right"), getChestMaterial("starwars"));
+        } else {
+            return chooseMaterial(type, left[tile.getChestType().ordinal()], right[tile.getChestType().ordinal()], single[tile.getChestType().ordinal()]);
         }
     }
 }

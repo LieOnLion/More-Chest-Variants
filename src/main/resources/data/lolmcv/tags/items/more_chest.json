@@ -10,10 +10,6 @@
     "lolmcv:cherry_chest",
     "lolmcv:bamboo_chest",
     "lolmcv:warped_chest",
-    "lolmcv:crimson_chest",
-    {
-      "id": "#lolmcv:more_chest_bop",
-      "required": false
-    }
+    "lolmcv:crimson_chest"
   ]
 }

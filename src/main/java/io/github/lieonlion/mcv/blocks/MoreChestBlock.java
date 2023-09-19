@@ -1,6 +1,6 @@
 package io.github.lieonlion.mcv.blocks;
 
-import io.github.lieonlion.mcv.MoreChestRegister;
+import io.github.lieonlion.mcv.init.MoreChestInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChestBlock;
@@ -12,7 +12,7 @@ public class MoreChestBlock extends ChestBlock {
     private final MoreChestEnum chestType;
 
     public MoreChestBlock(MoreChestEnum chestType, MapColor colour) {
-        super(Properties.copy(Blocks.CHEST).mapColor(colour), () -> MoreChestRegister.CHEST_TILE_TYPE.get());
+        super(Properties.copy(Blocks.CHEST).mapColor(colour), () -> MoreChestInit.chest_entity.get());
         this.chestType = chestType;
     }
 

@@ -10,16 +10,5 @@
   "block.lolmcv.cherry_chest": "Kirschtruhe",
   "block.lolmcv.bamboo_chest": "Bambustruhe",
   "block.lolmcv.crimson_chest": "Karmesintruhe",
-  "block.lolmcv.warped_chest": "Wirrpilztruhe",
-
-  "block.lolmcv.fir_chest": "Tannenholztruhe",
-  "block.lolmcv.redwood_chest": "Rotholztruhe",
-  "block.lolmcv.mahogany_chest": "Mahoganitruhe",
-  "block.lolmcv.jacaranda_chest": "Palisanderholztruhe",
-  "block.lolmcv.palm_chest": "Palmenholztruhe",
-  "block.lolmcv.willow_chest": "Wieidenholztruhe",
-  "block.lolmcv.dead_chest": "Totholztruhe",
-  "block.lolmcv.magic_chest": "Zauberbaumholztruhe",
-  "block.lolmcv.umbran_chest": "Umbranholztruhe",
-  "block.lolmcv.hellbark_chest": "Höllenborkentruhe"
+  "block.lolmcv.warped_chest": "Wirrpilztruhe"
 }
