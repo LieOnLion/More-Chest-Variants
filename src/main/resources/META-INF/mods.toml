@@ -8,9 +8,7 @@ version="${mod_version} - ${minecraft_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
 description='''More Chest Variants adds new wood types to chests
-
-Inspiration came from, More Crafting Tables -
-https://www.curseforge.com/minecraft/mc-mods/more-crafting-tables-for-forge
+Making 11 chests to fill your builds with colourful storage
 
 [Make sure to set Mod Resources above Default]'''
 
