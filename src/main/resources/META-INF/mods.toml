@@ -4,13 +4,14 @@ license="${mod_license}"
 
 [[mods]]
 modId="${mod_id}"
-version="${mod_version} - ${minecraft_version}"
+version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
 description='''More Chest Variants adds new wood types to chests
 Making 11 chests to fill your builds with colourful storage
 
 [Make sure to set Mod Resources above Default]'''
+logoFile="logo.png"
 
 [[dependencies.${mod_id}]]
     modId="forge"

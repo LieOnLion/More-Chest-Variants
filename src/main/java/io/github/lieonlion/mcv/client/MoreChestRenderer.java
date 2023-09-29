@@ -55,7 +55,7 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
         };
     }
 
-    private static Material getChestMaterial(String path) {
+    public static Material getChestMaterial(String path) {
         return new Material(Sheets.CHEST_SHEET, new ResourceLocation(MoreChestVariants.MODID, "entity/chest/" + path));
     }
 
