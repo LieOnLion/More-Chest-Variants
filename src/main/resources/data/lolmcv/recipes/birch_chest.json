@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chest",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:birch_planks"
+    }
+  },
+  "result": {
+    "item": "lolmcv:birch_chest"
+  }
+}

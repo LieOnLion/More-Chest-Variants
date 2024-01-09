@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "chest",
+  "ingredients": [
+    {
+      "tag": "lolmcv:more_trapped_chest"
+    }
+  ],
+  "result": {
+    "item": "minecraft:trapped_chest"
+  }
+}
