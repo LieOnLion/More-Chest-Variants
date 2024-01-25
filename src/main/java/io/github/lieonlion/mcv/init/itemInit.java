@@ -79,7 +79,7 @@ public class itemInit {
         addToTab(event, OAK_CHEST_I.asItem());
     } public static void addToTab(BuildCreativeModeTabContentsEvent event, Item item) {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS || event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
-            event.getEntries().putAfter (new ItemStack(Blocks.CHEST), new ItemStack(item), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(Blocks.CHEST), new ItemStack(item), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 
     public static void register() {

@@ -22,8 +22,8 @@
 				"north": {"uv": [1.5, 1.25, 1, 0.25], "texture": "#wood_type"},
 				"east": {"uv": [0, 1.25, 0.25, 0.25], "texture": "#wood_type"},
 				"west": {"uv": [0.75, 1.25, 1, 0.25], "texture": "#wood_type"},
-				"up": {"uv": [0.75, 0.25, 0.25, 0], "texture": "#wood_type"},
-				"down": {"uv": [1.25, 0.25, 0.75, 0], "texture": "#wood_type"}
+				"up": {"uv": [1.25, 0.25, 0.75, 0], "texture": "#wood_type"},
+				"down": {"uv": [0.75, 0.25, 0.25, 0], "texture": "#wood_type"}
 			}
 		},
 		{

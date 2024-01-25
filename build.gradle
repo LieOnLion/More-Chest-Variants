@@ -9,7 +9,7 @@ plugins {
 group = project.mod_group_id
 
 base {
-    archivesName = "${mod_comp_name}-${mod_version}+${minecraft_version}-Fabric"
+    archivesName = "${mod_comp_name}-${mod_version}+${minecraft_version}-Neo"
 }
 
 repositories {

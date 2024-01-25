@@ -2,6 +2,7 @@ package io.github.lieonlion.mcv.blocks;
 
 import io.github.lieonlion.mcv.init.blockInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
@@ -22,6 +23,11 @@ public class MoreTrappedChestBlockEntity extends ChestBlockEntity {
             level.updateNeighborsAt(pos, block);
             level.updateNeighborsAt(pos.below(), block);
         }
+    }
+
+    @Override
+    protected Component getDefaultName() {
+        return Component.translatable("container.lolmcv." + chestType.name() + "_chest");
     }
 
     public MoreChestEnum getChestType() {

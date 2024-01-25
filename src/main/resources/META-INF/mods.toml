@@ -13,6 +13,9 @@ logoBlur=false
 displayURL="https://lieonlion.github.io/LieOnLion/"
 issueTrackerURL="https://github.com/LieOnLion/More-Chest-Variants/issues"
 
+[[mixins]]
+    config="lolmcv.mixins.json"
+
 [[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"

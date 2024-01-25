@@ -38,32 +38,32 @@ public enum MoreChestEnum {
       public BlockEntityType<MoreChestBlockEntity> getChestEntity() {
             return switch (this) {
                   case oak -> blockEntityInit.OAK_CHEST_E.get();
-                  case spruce -> blockEntityInit.OAK_CHEST_E.get();
-                  case birch -> blockEntityInit.OAK_CHEST_E.get();
-                  case jungle -> blockEntityInit.OAK_CHEST_E.get();
-                  case acacia -> blockEntityInit.OAK_CHEST_E.get();
-                  case dark_oak -> blockEntityInit.OAK_CHEST_E.get();
-                  case mangrove -> blockEntityInit.OAK_CHEST_E.get();
-                  case cherry -> blockEntityInit.OAK_CHEST_E.get();
-                  case bamboo -> blockEntityInit.OAK_CHEST_E.get();
-                  case crimson -> blockEntityInit.OAK_CHEST_E.get();
-                  case warped -> blockEntityInit.OAK_CHEST_E.get();
+                  case spruce -> blockEntityInit.SPRUCE_CHEST_E.get();
+                  case birch -> blockEntityInit.BIRCH_CHEST_E.get();
+                  case jungle -> blockEntityInit.JUNGLE_CHEST_E.get();
+                  case acacia -> blockEntityInit.ACACIA_CHEST_E.get();
+                  case dark_oak -> blockEntityInit.DARK_OAK_CHEST_E.get();
+                  case mangrove -> blockEntityInit.MANGROVE_CHEST_E.get();
+                  case cherry -> blockEntityInit.CHERRY_CHEST_E.get();
+                  case bamboo -> blockEntityInit.BAMBOO_CHEST_E.get();
+                  case crimson -> blockEntityInit.CRIMSON_CHEST_E.get();
+                  case warped -> blockEntityInit.WARPED_CHEST_E.get();
             };
       }
 
       public BlockEntityType<MoreTrappedChestBlockEntity> getTRPChestEntity() {
             return switch (this) {
                   case oak -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case spruce -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case birch -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case jungle -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case acacia -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case dark_oak -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case mangrove -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case cherry -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case bamboo -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case crimson -> blockEntityInit.OAK_TPR_CHEST_E.get();
-                  case warped -> blockEntityInit.OAK_TPR_CHEST_E.get();
+                  case spruce -> blockEntityInit.SPRUCE_TPR_CHEST_E.get();
+                  case birch -> blockEntityInit.BIRCH_TPR_CHEST_E.get();
+                  case jungle -> blockEntityInit.JUNGLE_TPR_CHEST_E.get();
+                  case acacia -> blockEntityInit.ACACIA_TPR_CHEST_E.get();
+                  case dark_oak -> blockEntityInit.DARK_OAK_TPR_CHEST_E.get();
+                  case mangrove -> blockEntityInit.MANGROVE_TPR_CHEST_E.get();
+                  case cherry -> blockEntityInit.CHERRY_TPR_CHEST_E.get();
+                  case bamboo -> blockEntityInit.BAMBOO_TPR_CHEST_E.get();
+                  case crimson -> blockEntityInit.CRIMSON_TPR_CHEST_E.get();
+                  case warped -> blockEntityInit.WARPED_TPR_CHEST_E.get();
             };
       }
 }
