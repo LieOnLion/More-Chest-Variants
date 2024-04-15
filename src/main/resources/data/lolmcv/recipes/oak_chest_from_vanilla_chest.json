@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "chest",
+  "ingredients": [
+    {
+      "item": "minecraft:chest"
+    }
+  ],
+  "result": {
+    "item": "lolmcv:oak_chest"
+  }
+}

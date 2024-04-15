@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#lolmcv:more_chest",
+      "required": false
+    },
+    {
+      "id": "#lolmcv:more_trapped_chest",
+      "required": false
+    }
+  ]
+}
