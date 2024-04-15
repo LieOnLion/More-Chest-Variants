@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chest",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:crimson_planks"
+    }
+  },
+  "result": {
+    "item": "lolmcv:crimson_chest"
+  }
+}

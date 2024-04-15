@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "io.github.lieonlion.mcv.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "lolmcv.refmap.json",
+  "mixins": [
+    "ChestTabMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
