@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lolmcv:crimson_chest",
+    "lolmcv:crimson_trapped_chest",
+    "lolmcv:warped_chest",
+    "lolmcv:warped_trapped_chest"
+  ]
+}
