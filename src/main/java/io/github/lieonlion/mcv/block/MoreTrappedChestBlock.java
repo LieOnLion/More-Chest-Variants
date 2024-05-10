@@ -112,8 +112,4 @@ public class MoreTrappedChestBlock extends ChestBlock {
         return this.combine(state, level, pos, false)
                 .apply(NAME_RETRIEVER).orElse(null);
     }
-
-    public String getChestType() {
-        return chestType;
-    }
 }

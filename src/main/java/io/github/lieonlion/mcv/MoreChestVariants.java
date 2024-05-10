@@ -2,6 +2,7 @@ package io.github.lieonlion.mcv;
 
 import io.github.lieonlion.mcv.init.McvBlockInit;
 import io.github.lieonlion.mcv.init.McvItemInit;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
@@ -14,5 +15,9 @@ public class MoreChestVariants {
         McvItemInit.registerItems(modBus);
 
         modBus.addListener(McvItemInit::addItemsToTab);
+    }
+
+    public static ResourceLocation asId(String path) {
+        return new ResourceLocation(MODID, path);
     }
 }
