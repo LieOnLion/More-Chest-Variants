@@ -11,8 +11,8 @@ import java.util.function.Supplier;
 
 @Mixin(CreativeModeTabs.class)
 public class ChestTabMixin {
-    @ModifyArg(method = "bootstrap", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/CreativeModeTab$Builder;icon(Ljava/util/function/Supplier;)Lnet/minecraft/world/item/CreativeModeTab$Builder;", ordinal = 13))
-    private static Supplier<ItemStack> bootstrap(Supplier<ItemStack> iconSupplier) {
-        return () -> new ItemStack(McvBlockInit.OAK_CHEST.get());
-    }
+     @ModifyArg(method = "bootstrap", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/CreativeModeTab$Builder;icon(Ljava/util/function/Supplier;)Lnet/minecraft/world/item/CreativeModeTab$Builder;", ordinal = 13))
+     private static Supplier<ItemStack> bootstrap(Supplier<ItemStack> iconSupplier){
+          return () -> new ItemStack(McvBlockInit.OAK_CHEST.get());
+     }
 }

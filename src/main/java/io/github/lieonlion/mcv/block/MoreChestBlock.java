@@ -53,11 +53,11 @@ public class MoreChestBlock extends ChestBlock {
                 final Container container = new CompoundContainer(chestBlockEntity, chestBlockEntity2);
                 return Optional.of(new MenuProvider() {
                     @javax.annotation.Nullable
-                    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-                        if (chestBlockEntity.canOpen(player) && chestBlockEntity2.canOpen(player)) {
-                            chestBlockEntity.unpackLootTable(inventory.player);
-                            chestBlockEntity2.unpackLootTable(inventory.player);
-                            return ChestMenu.sixRows(i, inventory, container);
+                    public AbstractContainerMenu createMenu(int p_51622_, Inventory p_51623_, Player p_51624_) {
+                        if (chestBlockEntity.canOpen(p_51624_) && chestBlockEntity2.canOpen(p_51624_)) {
+                            chestBlockEntity.unpackLootTable(p_51623_.player);
+                            chestBlockEntity2.unpackLootTable(p_51623_.player);
+                            return ChestMenu.sixRows(p_51622_, p_51623_, container);
                         } else {
                             return null;
                         }
