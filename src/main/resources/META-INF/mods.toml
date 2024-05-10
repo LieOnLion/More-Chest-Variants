@@ -9,7 +9,6 @@ displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''
 logoFile="logo.png"
-logoBlur=false
 displayURL="https://lieonlion.github.io/LieOnLion/"
 issueTrackerURL="https://github.com/LieOnLion/More-Chest-Variants/issues"
 
@@ -17,19 +16,19 @@ issueTrackerURL="https://github.com/LieOnLion/More-Chest-Variants/issues"
     modId="forge"
     mandatory=true
     versionRange="${forge_version_range}"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="minecraft"
     mandatory=true
     versionRange="${minecraft_version_range}"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="quad"
     mandatory=true
     versionRange="${quad_version}"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"

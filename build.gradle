@@ -54,7 +54,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    implementation fg.deobf("curse.maven:quad-932715:5254288")
+    runtimeOnly("curse.maven:quad-932715:5323574")
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.5"))
 }
 

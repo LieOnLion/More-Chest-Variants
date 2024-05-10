@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#lieonstudio:chests/normal",
+      "required": false
+    },
+    {
+      "id": "#lieonstudio:chests/trapped",
+      "required": false
+    }
+  ]
+}
