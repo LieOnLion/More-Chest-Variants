@@ -54,7 +54,7 @@ public class MoreTrappedChestRenderer extends ChestBlockEntityRenderer<MoreTrapp
     }
 
     public static SpriteIdentifier getChestPath(String path) {
-        return new SpriteIdentifier(TexturedRenderLayers.CHEST_ATLAS_TEXTURE, new Identifier(MoreChestVariants.MODID, "entity/chest/trapped/" + path)) {};
+        return new SpriteIdentifier(TexturedRenderLayers.CHEST_ATLAS_TEXTURE, MoreChestVariants.asId("entity/chest/trapped/" + path)) {};
     }
 
     private SpriteIdentifier getChestMaterial(MoreTrappedChestBlockEntity blockEntity, ChestType type) {

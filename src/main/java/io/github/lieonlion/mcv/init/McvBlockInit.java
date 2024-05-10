@@ -5,14 +5,12 @@ import io.github.lieonlion.mcv.block.MoreChestBlock;
 import io.github.lieonlion.mcv.block.MoreTrappedChestBlock;
 import io.github.lieonlion.mcv.block.entity.MoreChestBlockEntity;
 import io.github.lieonlion.mcv.block.entity.MoreTrappedChestBlockEntity;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,27 +46,27 @@ public class McvBlockInit {
     public static final List<Block> more_trapped_chest = new ArrayList<>();
 
     public static void registerBlocks() {
-        registerBlock("oak", OAK_CHEST, OAK_TRAPPED_CHEST);
-        registerBlock("spruce", SPRUCE_CHEST, SPRUCE_TRAPPED_CHEST);
-        registerBlock("birch", BIRCH_CHEST, BIRCH_TRAPPED_CHEST);
-        registerBlock("jungle", JUNGLE_CHEST, JUNGLE_TRAPPED_CHEST);
-        registerBlock("acacia", ACACIA_CHEST, ACACIA_TRAPPED_CHEST);
-        registerBlock("dark_oak", DARK_OAK_CHEST, DARK_OAK_TRAPPED_CHEST);
-        registerBlock("mangrove", MANGROVE_CHEST, MANGROVE_TRAPPED_CHEST);
-        registerBlock("cherry", CHERRY_CHEST, CHERRY_TRAPPED_CHEST);
-        registerBlock("bamboo", BAMBOO_CHEST, BAMBOO_TRAPPED_CHEST);
-        registerBlock("crimson", CRIMSON_CHEST, CRIMSON_TRAPPED_CHEST);
-        registerBlock("warped", WARPED_CHEST, WARPED_TRAPPED_CHEST);
+        registerBlock(OAK_CHEST, OAK_TRAPPED_CHEST);
+        registerBlock(SPRUCE_CHEST, SPRUCE_TRAPPED_CHEST);
+        registerBlock(BIRCH_CHEST, BIRCH_TRAPPED_CHEST);
+        registerBlock(JUNGLE_CHEST, JUNGLE_TRAPPED_CHEST);
+        registerBlock(ACACIA_CHEST, ACACIA_TRAPPED_CHEST);
+        registerBlock(DARK_OAK_CHEST, DARK_OAK_TRAPPED_CHEST);
+        registerBlock(MANGROVE_CHEST, MANGROVE_TRAPPED_CHEST);
+        registerBlock(CHERRY_CHEST, CHERRY_TRAPPED_CHEST);
+        registerBlock(BAMBOO_CHEST, BAMBOO_TRAPPED_CHEST);
+        registerBlock(CRIMSON_CHEST, CRIMSON_TRAPPED_CHEST);
+        registerBlock(WARPED_CHEST, WARPED_TRAPPED_CHEST);
 
         MORE_CHEST_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, "chest_entity",
-                FabricBlockEntityTypeBuilder.create(MoreChestBlockEntity::new, more_chest.toArray(Block[]::new)).build());
+                BlockEntityType.Builder.create(MoreChestBlockEntity::new, more_chest.toArray(Block[]::new)).build(null));
         MORE_TRAPPED_CHEST_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, "trapped_chest_entity",
-                FabricBlockEntityTypeBuilder.create(MoreTrappedChestBlockEntity::new, more_trapped_chest.toArray(Block[]::new)).build());
+                BlockEntityType.Builder.create(MoreTrappedChestBlockEntity::new, more_trapped_chest.toArray(Block[]::new)).build(null));
     }
 
-    private static void registerBlock(String name, Block chest, Block trappedChest) {
-        Registry.register(Registries.BLOCK, new Identifier(MoreChestVariants.MODID, name + "_chest"), chest);
-        Registry.register(Registries.BLOCK, new Identifier(MoreChestVariants.MODID, name + "_trapped_chest"), trappedChest);
+    private static void registerBlock(MoreChestBlock chest, MoreTrappedChestBlock trappedChest) {
+        Registry.register(Registries.BLOCK, MoreChestVariants.asId(chest.chestType + "_chest"), chest);
+        Registry.register(Registries.BLOCK, MoreChestVariants.asId(trappedChest.chestType + "_trapped_chest"), trappedChest);
         more_chest.add(chest);
         more_trapped_chest.add(trappedChest);
     }

@@ -2,11 +2,11 @@
   "replace": false,
   "values": [
     {
-      "id": "#lolmcv:more_chest",
+      "id": "#lieonstudio:chests/normal",
       "required": false
     },
     {
-      "id": "#lolmcv:more_trapped_chest",
+      "id": "#lieonstudio:chests/trapped",
       "required": false
     }
   ]

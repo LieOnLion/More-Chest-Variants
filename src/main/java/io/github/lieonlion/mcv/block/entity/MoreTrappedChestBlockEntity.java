@@ -25,7 +25,7 @@ public class MoreTrappedChestBlockEntity extends ChestBlockEntity {
 
     @Override
     protected Text getContainerName() {
-        return Text.translatable("container.lolmcv." + getBlock().getChestType() + "_chest");
+        return Text.translatable("container.lolmcv." + getBlock().chestType + "_chest");
     }
 
     public MoreTrappedChestBlock getBlock() {
