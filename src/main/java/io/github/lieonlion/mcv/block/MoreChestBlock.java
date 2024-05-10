@@ -1,0 +1,93 @@
+package io.github.lieonlion.mcv.block;
+
+import io.github.lieonlion.mcv.block.entity.MoreChestBlockEntity;
+import io.github.lieonlion.mcv.init.McvBlockInit;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.CompoundContainer;
+import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.block.DoubleBlockCombiner;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
+
+public class MoreChestBlock extends ChestBlock {
+    public DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> NAME_RETRIEVER;
+    public final String chestType;
+
+    public MoreChestBlock(MapColor colour, String chestType) {
+        super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY.get());
+        this.chestType = chestType;
+
+        registerMaterialNameRetriever();
+    }
+
+    public MoreChestBlock(MapColor colour, SoundType sound, String chestType) {
+        super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour).sound(sound), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY.get());
+        this.chestType = chestType;
+
+        registerMaterialNameRetriever();
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new MoreChestBlockEntity(pos, state);
+    }
+
+    protected void registerMaterialNameRetriever() {
+        NAME_RETRIEVER = new DoubleBlockCombiner.Combiner<>() {
+            public Optional<MenuProvider> acceptDouble(ChestBlockEntity chestBlockEntity, ChestBlockEntity chestBlockEntity2) {
+                final Container container = new CompoundContainer(chestBlockEntity, chestBlockEntity2);
+                return Optional.of(new MenuProvider() {
+                    @javax.annotation.Nullable
+                    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
+                        if (chestBlockEntity.canOpen(player) && chestBlockEntity2.canOpen(player)) {
+                            chestBlockEntity.unpackLootTable(inventory.player);
+                            chestBlockEntity2.unpackLootTable(inventory.player);
+                            return ChestMenu.sixRows(i, inventory, container);
+                        } else {
+                            return null;
+                        }
+                    }
+
+                    public Component getDisplayName() {
+                        if (chestBlockEntity.hasCustomName()) {
+                            return chestBlockEntity.getDisplayName();
+                        } else {
+                            return chestBlockEntity2.hasCustomName() ? chestBlockEntity2.getDisplayName() :
+                                    Component.translatable("container.lolmcv." + chestType + "_chestDouble");
+                        }
+                    }
+                });
+            }
+
+            public Optional<MenuProvider> acceptSingle(ChestBlockEntity chestBlockEntity) {
+                return Optional.of(chestBlockEntity);
+            }
+
+            public Optional<MenuProvider> acceptNone() {
+                return Optional.empty();
+            }
+        };
+    }
+
+    @Override
+    @Nullable
+    public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        return this.combine(state, level, pos, false)
+                .apply(NAME_RETRIEVER).orElse(null);
+    }
+}
