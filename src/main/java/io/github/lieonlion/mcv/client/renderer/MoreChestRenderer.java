@@ -19,7 +19,6 @@ import net.minecraft.client.render.block.entity.LightmapCoordinatesRetriever;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
@@ -65,7 +64,7 @@ public class MoreChestRenderer extends ChestBlockEntityRenderer<MoreChestBlockEn
     }
 
     public static SpriteIdentifier getChestPath(String path) {
-        return new SpriteIdentifier(TexturedRenderLayers.CHEST_ATLAS_TEXTURE, new Identifier(MoreChestVariants.MODID, "entity/chest/" + path)) {};
+        return new SpriteIdentifier(TexturedRenderLayers.CHEST_ATLAS_TEXTURE, MoreChestVariants.asId("entity/chest/" + path));
     }
 
     public static SpriteIdentifier chooseMaterial(ChestType type, SpriteIdentifier left, SpriteIdentifier right, SpriteIdentifier single) {

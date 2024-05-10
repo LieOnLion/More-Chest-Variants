@@ -86,8 +86,4 @@ public class MoreChestBlock extends ChestBlock {
         return this.getBlockEntitySource(state, world, pos, false)
                 .apply(NAME_RETRIEVER).orElse(null);
     }
-
-    public String getChestType() {
-        return chestType;
-    }
 }
