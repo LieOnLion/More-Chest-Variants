@@ -52,7 +52,7 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:quad-932715:5254288")
+    implementation fg.deobf("curse.maven:quad-932715:5387943")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.5"))

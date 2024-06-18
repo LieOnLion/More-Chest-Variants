@@ -17,12 +17,15 @@ import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class MoreChestBlock extends ChestBlock {
     public DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> NAME_RETRIEVER;
@@ -42,6 +45,13 @@ public class MoreChestBlock extends ChestBlock {
         registerMaterialNameRetriever();
     }
 
+    public MoreChestBlock(BlockBehaviour.Properties properties, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier, String chestType) {
+        super(properties, supplier);
+        this.chestType = chestType;
+
+        registerMaterialNameRetriever();
+    }
+
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new MoreChestBlockEntity(pos, state);
@@ -52,7 +62,7 @@ public class MoreChestBlock extends ChestBlock {
             public Optional<MenuProvider> acceptDouble(ChestBlockEntity chestBlockEntity, ChestBlockEntity chestBlockEntity2) {
                 final Container container = new CompoundContainer(chestBlockEntity, chestBlockEntity2);
                 return Optional.of(new MenuProvider() {
-                    @javax.annotation.Nullable
+                    @Nullable
                     public AbstractContainerMenu createMenu(int p_51622_, Inventory p_51623_, Player p_51624_) {
                         if (chestBlockEntity.canOpen(p_51624_) && chestBlockEntity2.canOpen(p_51624_)) {
                             chestBlockEntity.unpackLootTable(p_51623_.player);
@@ -89,9 +99,5 @@ public class MoreChestBlock extends ChestBlock {
     public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
         return this.combine(state, level, pos, false)
                 .apply(NAME_RETRIEVER).orElse(null);
-    }
-
-    public String getChestType() {
-        return chestType;
     }
 }
