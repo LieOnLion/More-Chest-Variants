@@ -6,7 +6,6 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.resources.model.Material;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -43,7 +42,7 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
     }
 
     public static Material getChestPath(String path) {
-        return new Material(Sheets.CHEST_SHEET, new ResourceLocation(MoreChestVariants.MODID, "entity/chest/" + path));
+        return new Material(Sheets.CHEST_SHEET, MoreChestVariants.asId("entity/chest/" + path));
     }
 
     private Material getChestMaterial(MoreChestBlockEntity blockEntity, ChestType type) {

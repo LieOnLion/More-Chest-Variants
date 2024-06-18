@@ -17,12 +17,15 @@ import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class MoreChestBlock extends ChestBlock {
     public DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> NAME_RETRIEVER;
@@ -42,6 +45,13 @@ public class MoreChestBlock extends ChestBlock {
         registerMaterialNameRetriever();
     }
 
+    public MoreChestBlock(BlockBehaviour.Properties properties, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier, String chestType) {
+        super(properties, supplier);
+        this.chestType = chestType;
+
+        registerMaterialNameRetriever();
+    }
+
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new MoreChestBlockEntity(pos, state);
@@ -52,12 +62,12 @@ public class MoreChestBlock extends ChestBlock {
             public Optional<MenuProvider> acceptDouble(ChestBlockEntity chestBlockEntity, ChestBlockEntity chestBlockEntity2) {
                 final Container container = new CompoundContainer(chestBlockEntity, chestBlockEntity2);
                 return Optional.of(new MenuProvider() {
-                    @javax.annotation.Nullable
-                    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-                        if (chestBlockEntity.canOpen(player) && chestBlockEntity2.canOpen(player)) {
-                            chestBlockEntity.unpackLootTable(inventory.player);
-                            chestBlockEntity2.unpackLootTable(inventory.player);
-                            return ChestMenu.sixRows(i, inventory, container);
+                    @Nullable
+                    public AbstractContainerMenu createMenu(int p_51622_, Inventory p_51623_, Player p_51624_) {
+                        if (chestBlockEntity.canOpen(p_51624_) && chestBlockEntity2.canOpen(p_51624_)) {
+                            chestBlockEntity.unpackLootTable(p_51623_.player);
+                            chestBlockEntity2.unpackLootTable(p_51623_.player);
+                            return ChestMenu.sixRows(p_51622_, p_51623_, container);
                         } else {
                             return null;
                         }
