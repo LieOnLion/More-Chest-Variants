@@ -14,7 +14,7 @@ public class MoreChestBlockEntity extends ChestBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.lolmcv." + getBlock().getChestType() + "_chest");
+        return Component.translatable("container.lolmcv." + getBlock().chestType + "_chest");
     }
 
     public MoreChestBlock getBlock() {

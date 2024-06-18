@@ -2,6 +2,7 @@ package io.github.lieonlion.mcv;
 
 import io.github.lieonlion.mcv.init.McvBlockInit;
 import io.github.lieonlion.mcv.init.McvItemInit;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -20,5 +21,9 @@ public class MoreChestVariants {
         modEventBus.addListener(McvItemInit::addItemsToTab);
 
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    public static ResourceLocation asId(String path) {
+        return new ResourceLocation(MODID, path);
     }
 }
