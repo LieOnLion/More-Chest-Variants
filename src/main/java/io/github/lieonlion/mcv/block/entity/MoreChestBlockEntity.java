@@ -2,10 +2,10 @@ package io.github.lieonlion.mcv.block.entity;
 
 import io.github.lieonlion.mcv.block.MoreChestBlock;
 import io.github.lieonlion.mcv.init.McvBlockInit;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.ChestBlockEntity;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class MoreChestBlockEntity extends ChestBlockEntity {
     public MoreChestBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -13,11 +13,11 @@ public class MoreChestBlockEntity extends ChestBlockEntity {
     }
 
     @Override
-    protected Text getContainerName() {
-        return Text.translatable("container.lolmcv." + getBlock().chestType + "_chest");
+    protected Component getDefaultName() {
+        return Component.translatable("container.lolmcv." + getBlock().chestType + "_chest");
     }
 
     public MoreChestBlock getBlock() {
-        return (MoreChestBlock) getCachedState().getBlock();
+        return (MoreChestBlock) getBlockState().getBlock();
     }
 }
