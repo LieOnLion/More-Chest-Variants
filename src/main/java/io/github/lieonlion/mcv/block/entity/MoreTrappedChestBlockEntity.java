@@ -2,33 +2,33 @@ package io.github.lieonlion.mcv.block.entity;
 
 import io.github.lieonlion.mcv.block.MoreTrappedChestBlock;
 import io.github.lieonlion.mcv.init.McvBlockInit;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.ChestBlockEntity;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class MoreTrappedChestBlockEntity extends ChestBlockEntity {
     public MoreTrappedChestBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(McvBlockInit.MORE_TRAPPED_CHEST_BLOCK_ENTITY, blockPos, blockState);
     }
 
-    protected void onViewerCountUpdate(World world, BlockPos pos, BlockState state, int oldViewerCount, int newViewerCount) {
-        super.onViewerCountUpdate(world, pos, state, oldViewerCount, newViewerCount);
-        if (oldViewerCount != newViewerCount) {
+    protected void signalOpenCount(Level level, BlockPos pos, BlockState state, int i, int j) {
+        super.signalOpenCount(level, pos, state, i, j);
+        if (i != j) {
             Block block = state.getBlock();
-            world.updateNeighborsAlways(pos, block);
-            world.updateNeighborsAlways(pos.down(), block);
+            level.updateNeighborsAt(pos, block);
+            level.updateNeighborsAt(pos.below(), block);
         }
     }
 
     @Override
-    protected Text getContainerName() {
-        return Text.translatable("container.lolmcv." + getBlock().chestType + "_chest");
+    protected Component getDefaultName() {
+        return Component.translatable("container.lolmcv." + getBlock().chestType + "_chest");
     }
 
     public MoreTrappedChestBlock getBlock() {
-        return (MoreTrappedChestBlock) getCachedState().getBlock();
+        return (MoreTrappedChestBlock) getBlockState().getBlock();
     }
 }

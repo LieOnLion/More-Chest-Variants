@@ -2,79 +2,94 @@ package io.github.lieonlion.mcv.block;
 
 import io.github.lieonlion.mcv.block.entity.MoreChestBlockEntity;
 import io.github.lieonlion.mcv.init.McvBlockInit;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.ChestBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.DoubleInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.screen.GenericContainerScreenHandler;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.CompoundContainer;
+import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.block.DoubleBlockCombiner;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+import java.util.function.Supplier;
 
 public class MoreChestBlock extends ChestBlock {
-    public DoubleBlockProperties.PropertyRetriever<ChestBlockEntity, Optional<NamedScreenHandlerFactory>> NAME_RETRIEVER;
+    public DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> NAME_RETRIEVER;
     public final String chestType;
 
     public MoreChestBlock(MapColor colour, String chestType) {
-        super(Settings.copy(Blocks.CHEST).mapColor(colour), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY);
+        super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY);
         this.chestType = chestType;
 
         registerMaterialNameRetriever();
     }
 
-    public MoreChestBlock(MapColor colour, BlockSoundGroup sound, String chestType) {
-        super(Settings.copy(Blocks.CHEST).mapColor(colour).sounds(sound), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY);
+    public MoreChestBlock(MapColor colour, SoundType sound, String chestType) {
+        super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour).sound(sound), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY);
+        this.chestType = chestType;
+
+        registerMaterialNameRetriever();
+    }
+
+    public MoreChestBlock(BlockBehaviour.Properties properties, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier, String chestType) {
+        super(properties, supplier);
         this.chestType = chestType;
 
         registerMaterialNameRetriever();
     }
 
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new MoreChestBlockEntity(pos, state);
     }
 
     protected void registerMaterialNameRetriever() {
-        NAME_RETRIEVER = new DoubleBlockProperties.PropertyRetriever<>() {
-            public Optional<NamedScreenHandlerFactory> getFromBoth(ChestBlockEntity chestBlockEntity, ChestBlockEntity chestBlockEntity2) {
-                final Inventory inventory = new DoubleInventory(chestBlockEntity, chestBlockEntity2);
-                return Optional.of(new NamedScreenHandlerFactory() {
+        NAME_RETRIEVER = new DoubleBlockCombiner.Combiner<>() {
+            public Optional<MenuProvider> acceptDouble(ChestBlockEntity chestBlockEntity, ChestBlockEntity chestBlockEntity2) {
+                final Container container = new CompoundContainer(chestBlockEntity, chestBlockEntity2);
+                return Optional.of(new MenuProvider() {
                     @Nullable
-                    public ScreenHandler createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                        if (chestBlockEntity.checkUnlocked(playerEntity) && chestBlockEntity2.checkUnlocked(playerEntity)) {
-                            chestBlockEntity.generateLoot(playerInventory.player);
-                            chestBlockEntity2.generateLoot(playerInventory.player);
-                            return GenericContainerScreenHandler.createGeneric9x6(i, playerInventory, inventory);
+                    public AbstractContainerMenu createMenu(int p_51622_, Inventory p_51623_, Player p_51624_) {
+                        if (chestBlockEntity.canOpen(p_51624_) && chestBlockEntity2.canOpen(p_51624_)) {
+                            chestBlockEntity.unpackLootTable(p_51623_.player);
+                            chestBlockEntity2.unpackLootTable(p_51623_.player);
+                            return ChestMenu.sixRows(p_51622_, p_51623_, container);
                         } else {
                             return null;
                         }
                     }
 
-                    public Text getDisplayName() {
+                    public Component getDisplayName() {
                         if (chestBlockEntity.hasCustomName()) {
                             return chestBlockEntity.getDisplayName();
                         } else {
                             return chestBlockEntity2.hasCustomName() ? chestBlockEntity2.getDisplayName() :
-                                    Text.translatable("container.lolmcv." + chestType + "_chestDouble");
+                                    Component.translatable("container.lolmcv." + chestType + "_chestDouble");
                         }
                     }
                 });
             }
 
-            public Optional<NamedScreenHandlerFactory> getFrom(ChestBlockEntity chestBlockEntity) {
+            public Optional<MenuProvider> acceptSingle(ChestBlockEntity chestBlockEntity) {
                 return Optional.of(chestBlockEntity);
             }
 
-            public Optional<NamedScreenHandlerFactory> getFallback() {
+            public Optional<MenuProvider> acceptNone() {
                 return Optional.empty();
             }
         };
@@ -82,8 +97,8 @@ public class MoreChestBlock extends ChestBlock {
 
     @Override
     @Nullable
-    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-        return this.getBlockEntitySource(state, world, pos, false)
+    public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        return this.combine(state, level, pos, false)
                 .apply(NAME_RETRIEVER).orElse(null);
     }
 }
