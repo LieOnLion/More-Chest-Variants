@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "${mod_id}",
+	"version": "${mod_version}",
+	"name": "${mod_name}",
+	"description": "${mod_description}",
+	"authors": [
+		"${mod_authors}"
+	],
+	"contact": {
+		"homepage": "https://lieonlion.github.io/LieOnLion/",
+		"sources": "https://github.com/LieOnLion/More-Chest-Variants",
+		"issues": "https://github.com/LieOnLion/More-Chest-Variants/issues"
+	},
+	"license": "${mod_license}",
+	"icon": "logo.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.lieonlion.mcv.MoreChestVariants"
+		],
+		"client": [
+			"io.github.lieonlion.mcv.client.MoreChestVariantsClient"
+		]
+	},
+	"mixins": [
+		"${mod_id}.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*",
+		"quad": ">=${quad_version}"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.youtube": "https://www.youtube.com/@lieonlion?sub_confirmation=1",
+				"modmenu.discord": "https://discord.com/invite/sA42pp6cuX"
+			}
+		}
+	}
+}
