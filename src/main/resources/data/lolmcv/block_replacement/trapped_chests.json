@@ -1,0 +1,80 @@
+{
+  "values": [
+    {
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:oak_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/spruce",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:spruce_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/birch",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:birch_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/jungle",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:jungle_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/acacia",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:acacia_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/dark_oak",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:dark_oak_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/mangrove",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:mangrove_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/cherry",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:cherry_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/bamboo",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:bamboo_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/crimson",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:crimson_trapped_chest"
+      }
+    },
+    {
+      "structures": "#quad:is/warped",
+      "block_replacement": {
+        "targets": "minecraft:trapped_chest",
+        "replacement": "lolmcv:warped_trapped_chest"
+      }
+    }
+  ]
+}
