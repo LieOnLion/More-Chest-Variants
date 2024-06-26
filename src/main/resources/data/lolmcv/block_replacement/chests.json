@@ -1,7 +1,6 @@
 {
   "values": [
     {
-      "structures": "#quad:is/oak",
       "block_replacement": {
         "targets": "minecraft:chest",
         "replacement": "lolmcv:oak_chest"
