@@ -70,8 +70,7 @@ public class McvItemInit {
         registerToTab(event, BAMBOO_TRAPPED_CHEST_I.get(), CHERRY_TRAPPED_CHEST_I.get());
         registerToTab(event, CRIMSON_TRAPPED_CHEST_I.get(), BAMBOO_TRAPPED_CHEST_I.get());
         registerToTab(event, WARPED_TRAPPED_CHEST_I.get(), CRIMSON_TRAPPED_CHEST_I.get());
-
     } public static void registerToTab(BuildCreativeModeTabContentsEvent event, Item chest, Item chestAfter) {
-        event.getEntries().putAfter(new ItemStack(chestAfter), new ItemStack(chest), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        event.insertAfter(new ItemStack(chestAfter), new ItemStack(chest), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 }
