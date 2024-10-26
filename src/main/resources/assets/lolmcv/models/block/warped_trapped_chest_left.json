@@ -1,0 +1,7 @@
+{
+    "parent": "lolmcv:block/chests/chest_left_base",
+    "textures": {
+        "wood_type": "lolmcv:entity/chest/trapped/warped_left",
+        "particle": "minecraft:block/warped_planks"
+    }
+}

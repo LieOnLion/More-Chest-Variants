@@ -1,5 +1,49 @@
 {
     "variants": {
-        "": { "model": "lolmcv:block/warped_trapped_chest" }
+        "facing=north,type=single": {
+            "model": "lolmcv:block/warped_trapped_chest"
+        },
+        "facing=east,type=single": {
+            "model": "lolmcv:block/warped_trapped_chest",
+            "y": 90
+        },
+        "facing=south,type=single": {
+            "model": "lolmcv:block/warped_trapped_chest",
+            "y": 180
+        },
+        "facing=west,type=single": {
+            "model": "lolmcv:block/warped_trapped_chest",
+            "y": 270
+        },
+        "facing=north,type=left": {
+            "model": "lolmcv:block/warped_trapped_chest_left"
+        },
+        "facing=east,type=left": {
+            "model": "lolmcv:block/warped_trapped_chest_left",
+            "y": 90
+        },
+        "facing=south,type=left": {
+            "model": "lolmcv:block/warped_trapped_chest_left",
+            "y": 180
+        },
+        "facing=west,type=left": {
+            "model": "lolmcv:block/warped_trapped_chest_left",
+            "y": 270
+        },
+        "facing=north,type=right": {
+            "model": "lolmcv:block/warped_trapped_chest_right"
+        },
+        "facing=east,type=right": {
+            "model": "lolmcv:block/warped_trapped_chest_right",
+            "y": 90
+        },
+        "facing=south,type=right": {
+            "model": "lolmcv:block/warped_trapped_chest_right",
+            "y": 180
+        },
+        "facing=west,type=right": {
+            "model": "lolmcv:block/warped_trapped_chest_right",
+            "y": 270
+        }
     }
 }

@@ -1,0 +1,7 @@
+{
+    "parent": "lolmcv:block/chests/chest_right_base",
+    "textures": {
+        "wood_type": "lolmcv:entity/chest/trapped/dark_oak_right",
+        "particle": "minecraft:block/dark_oak_planks"
+    }
+}
