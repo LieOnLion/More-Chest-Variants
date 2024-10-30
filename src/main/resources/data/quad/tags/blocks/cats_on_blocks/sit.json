@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "#lieonstudio:chests/normal",
-      "required": false
-    }
-  ]
-}
