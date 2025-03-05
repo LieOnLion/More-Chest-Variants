@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import io.github.lieonlion.mcv.MoreChestVariants;
+import io.github.lieonlion.mcv.block.MoreChestBlock;
 import io.github.lieonlion.mcv.block.entity.MoreChestBlockEntity;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.fabricmc.api.EnvType;
@@ -30,7 +31,7 @@ import net.minecraft.world.level.block.state.properties.ChestType;
 import java.util.Calendar;
 
 @Environment(EnvType.CLIENT)
-public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
+public class MoreChestRenderer<T extends ChestBlockEntity> extends ChestRenderer<T> {
     private final ModelPart lid;
     private final ModelPart bottom;
     private final ModelPart lock;
@@ -79,18 +80,19 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
         };
     }
 
-    private Material getChestMaterial(MoreChestBlockEntity blockEntity, ChestType type) {
+    private Material getChestMaterial(T blockEntity, ChestType type) {
+        String chestType = ((MoreChestBlock) blockEntity.getBlockState().getBlock()).chestType;
         if (christmas) {
             return Sheets.chooseMaterial(blockEntity, type, true);
         } else if(starwarsday) {
             return chooseMaterial(type, getChestPath("starwars_left"), getChestPath("starwars_right"), getChestPath("starwars"));
         } else {
-            return chooseMaterial(type, getChestPath(blockEntity.getBlock().chestType + "_left"),
-                    getChestPath(blockEntity.getBlock().chestType + "_right"), getChestPath(blockEntity.getBlock().chestType));
+            return chooseMaterial(type, getChestPath(chestType + "_left"),
+                    getChestPath(chestType + "_right"), getChestPath(chestType));
         }
     }
 
-    public void render(MoreChestBlockEntity blockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j) {
+    public void render(T blockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j) {
         Level level = blockEntity.getLevel();
         boolean bl = level != null;
         BlockState blockState = bl ? blockEntity.getBlockState() : Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.SOUTH);

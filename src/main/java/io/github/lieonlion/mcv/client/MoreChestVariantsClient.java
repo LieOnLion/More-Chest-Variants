@@ -1,7 +1,6 @@
 package io.github.lieonlion.mcv.client;
 
 import io.github.lieonlion.mcv.client.renderer.MoreChestRenderer;
-import io.github.lieonlion.mcv.client.renderer.MoreTrappedChestRenderer;
 import io.github.lieonlion.mcv.init.McvBlockInit;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -13,6 +12,6 @@ public class MoreChestVariantsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockEntityRendererRegistry.register(McvBlockInit.MORE_CHEST_BLOCK_ENTITY, MoreChestRenderer::new);
-        BlockEntityRendererRegistry.register(McvBlockInit.MORE_TRAPPED_CHEST_BLOCK_ENTITY, MoreTrappedChestRenderer::new);
+        BlockEntityRendererRegistry.register(McvBlockInit.MORE_TRAPPED_CHEST_BLOCK_ENTITY, MoreChestRenderer::new);
     }
 }
