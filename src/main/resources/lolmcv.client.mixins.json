@@ -1,10 +1,9 @@
 {
   "required": true,
-  "package": "io.github.lieonlion.mcv.mixin",
+  "package": "io.github.lieonlion.mcv.client.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "CreativeModeTabsMixin",
-    "MinecartChestMixin"
+  "client": [
+    "ChestRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

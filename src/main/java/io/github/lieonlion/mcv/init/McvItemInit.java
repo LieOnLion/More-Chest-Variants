@@ -8,10 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 
 public class McvItemInit {
@@ -63,14 +60,20 @@ public class McvItemInit {
         registerItem(BAMBOO_CHEST_I, BAMBOO_TRAPPED_CHEST_I, PALE_OAK_CHEST_I, PALE_OAK_TRAPPED_CHEST_I);
         registerItem(CRIMSON_CHEST_I, CRIMSON_TRAPPED_CHEST_I, BAMBOO_CHEST_I, BAMBOO_TRAPPED_CHEST_I);
         registerItem(WARPED_CHEST_I, WARPED_TRAPPED_CHEST_I, CRIMSON_CHEST_I, CRIMSON_TRAPPED_CHEST_I);
+
+        addAfterItem(OAK_CHEST_I, Items.CHEST, CreativeModeTabs.REDSTONE_BLOCKS);
+        addAfterItem(OAK_TRAPPED_CHEST_I, Items.TRAPPED_CHEST, CreativeModeTabs.REDSTONE_BLOCKS);
     }
 
     private static void registerItem(BlockItem chest, BlockItem trappedChest, Item chestAfter, Item trappedAfter) {
         Registry.register(BuiltInRegistries.ITEM, MoreChestVariants.asId(((MoreChestBlock) chest.getBlock()).chestType + "_chest"), chest);
         Registry.register(BuiltInRegistries.ITEM, MoreChestVariants.asId(((MoreTrappedChestBlock) trappedChest.getBlock()).chestType + "_trapped_chest"), trappedChest);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.addAfter(chestAfter, chest));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> entries.addAfter(chestAfter,chest));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> entries.addAfter(trappedAfter, trappedChest));
+        addAfterItem(chest, chestAfter, CreativeModeTabs.FUNCTIONAL_BLOCKS);
+        addAfterItem(trappedChest, trappedAfter, CreativeModeTabs.SEARCH);
+    }
+
+    private static void addAfterItem(Item item, Item after, ResourceKey<CreativeModeTab> tab) {
+        ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.addAfter(after, item));
     }
 }

@@ -8,9 +8,13 @@ import io.github.lieonlion.mcv.block.entity.MoreTrappedChestBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ public class McvBlockInit {
     public static final MoreTrappedChestBlock BAMBOO_TRAPPED_CHEST = new MoreTrappedChestBlock(MapColor.COLOR_YELLOW, SoundType.BAMBOO_WOOD, "bamboo");
     public static final MoreTrappedChestBlock CRIMSON_TRAPPED_CHEST = new MoreTrappedChestBlock(MapColor.CRIMSON_STEM, SoundType.NETHER_WOOD, "crimson");
     public static final MoreTrappedChestBlock WARPED_TRAPPED_CHEST = new MoreTrappedChestBlock(MapColor.WARPED_STEM, SoundType.NETHER_WOOD, "warped");
+    public static final Block TEST_BLOCK = new Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, MoreChestVariants.asId("test_block"))));
 
     public static BlockEntityType<MoreChestBlockEntity> MORE_CHEST_BLOCK_ENTITY;
     public static BlockEntityType<MoreTrappedChestBlockEntity> MORE_TRAPPED_CHEST_BLOCK_ENTITY;
@@ -61,6 +66,8 @@ public class McvBlockInit {
         registerBlock(BAMBOO_CHEST, BAMBOO_TRAPPED_CHEST);
         registerBlock(CRIMSON_CHEST, CRIMSON_TRAPPED_CHEST);
         registerBlock(WARPED_CHEST, WARPED_TRAPPED_CHEST);
+
+        Registry.register(BuiltInRegistries.BLOCK, MoreChestVariants.asId("test_block"), TEST_BLOCK);
 
         MORE_CHEST_BLOCK_ENTITY = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, "chest_entity",
                 FabricBlockEntityTypeBuilder.create(MoreChestBlockEntity::new, more_chest.toArray(Block[]::new)).build());
