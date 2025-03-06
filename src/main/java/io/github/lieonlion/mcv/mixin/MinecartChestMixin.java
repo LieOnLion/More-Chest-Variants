@@ -45,7 +45,7 @@ public abstract class MinecartChestMixin extends AbstractMinecartContainer imple
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        if (compoundTag.contains("Chest", 8)) {
+        if (compoundTag.contains("Chest", 10)) {
             this.mcv$setChestType(NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compoundTag.getCompound("Chest")));
         }
     }
