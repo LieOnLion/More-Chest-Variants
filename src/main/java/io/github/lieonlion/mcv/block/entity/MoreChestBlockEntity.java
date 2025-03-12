@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class MoreChestBlockEntity extends ChestBlockEntity {
     public MoreChestBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -13,7 +14,7 @@ public class MoreChestBlockEntity extends ChestBlockEntity {
     }
 
     @Override
-    protected Component getDefaultName() {
+    protected @NotNull Component getDefaultName() {
         return Component.translatable("container.lolmcv." + getBlock().chestType + "_chest");
     }
 

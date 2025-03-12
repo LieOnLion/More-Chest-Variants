@@ -43,7 +43,7 @@ public class MoreChestMinecartItem extends MinecartItem {
                 d = 0.5;
             }
             AbstractMinecart abstractMinecart = AbstractMinecart.createMinecart(serverLevel, (double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.0625 + d, (double)blockPos.getZ() + 0.5, type, itemStack, useOnContext.getPlayer());
-            ((IMinecartChest) abstractMinecart).mcv$setChestType(((IMinecartChest) abstractMinecart).mcv$getChestState(this.chest));
+            ((IMinecartChest) abstractMinecart).mcv$setBlock(this.chest.defaultBlockState());
             serverLevel.addFreshEntity(abstractMinecart);
             serverLevel.gameEvent(GameEvent.ENTITY_PLACE, blockPos, GameEvent.Context.of(useOnContext.getPlayer(), serverLevel.getBlockState(blockPos.below())));
         }

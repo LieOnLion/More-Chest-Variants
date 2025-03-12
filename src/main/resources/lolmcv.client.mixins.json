@@ -3,7 +3,10 @@
   "package": "io.github.lieonlion.mcv.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "BlockEntityWithoutLevelRendererMixin"
+    "BlockEntityWithoutLevelRendererMixin",
+    "ChestedHorseModelMixin",
+    "LlamaModelMixin",
+    "accessor.LlamaModelAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
