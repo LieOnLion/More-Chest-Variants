@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Calendar;
 
@@ -90,7 +91,7 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
         }
     }
 
-    public void render(MoreChestBlockEntity blockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j) {
+    public void render(MoreChestBlockEntity blockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j, Vec3 vec3) {
         Level level = blockEntity.getLevel();
         boolean bl = level != null;
         BlockState blockState = bl ? blockEntity.getBlockState() : Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.SOUTH);
@@ -99,7 +100,7 @@ public class MoreChestRenderer extends ChestRenderer<MoreChestBlockEntity> {
         if (block instanceof ChestBlock moreChestBlock) {
             boolean bl2 = chestType != ChestType.SINGLE;
             poseStack.pushPose();
-            float g = ((Direction)blockState.getValue(ChestBlock.FACING)).toYRot();
+            float g = blockState.getValue(ChestBlock.FACING).toYRot();
             poseStack.translate(0.5F, 0.5F, 0.5F);
             poseStack.mulPose(Axis.YP.rotationDegrees(-g));
             poseStack.translate(-0.5F, -0.5F, -0.5F);
