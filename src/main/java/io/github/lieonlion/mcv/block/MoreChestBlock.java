@@ -22,76 +22,68 @@ import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 import java.util.function.Supplier;
 
 public class MoreChestBlock extends ChestBlock {
-    public DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> NAME_RETRIEVER;
-    public final String chestType;
+    public DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> NAME_RETRIEVER = new DoubleBlockCombiner.Combiner<>() {
+        public Optional<MenuProvider> acceptDouble(ChestBlockEntity chestBlockEntity, ChestBlockEntity chestBlockEntity2) {
+            final Container container = new CompoundContainer(chestBlockEntity, chestBlockEntity2);
+            return Optional.of(new MenuProvider() {
+                @Nullable
+                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                    if (chestBlockEntity.canOpen(player) && chestBlockEntity2.canOpen(player)) {
+                        chestBlockEntity.unpackLootTable(inventory.player);
+                        chestBlockEntity2.unpackLootTable(inventory.player);
+                        return ChestMenu.sixRows(id, inventory, container);
+                    } else {
+                        return null;
+                    }
+                }
+
+                public Component getDisplayName() {
+                    if (chestBlockEntity.hasCustomName()) {
+                        return chestBlockEntity.getDisplayName();
+                    } else {
+                        return chestBlockEntity2.hasCustomName() ? chestBlockEntity2.getDisplayName() :
+                                Component.translatable("container.lolmcv." + woodType + "_chestDouble");
+                    }
+                }
+            });
+        }
+
+        public Optional<MenuProvider> acceptSingle(ChestBlockEntity chestBlockEntity) {
+            return Optional.of(chestBlockEntity);
+        }
+
+        public Optional<MenuProvider> acceptNone() {
+            return Optional.empty();
+        }
+    };
+
+    public final String woodType;
 
     public MoreChestBlock(MapColor colour, String chestType) {
         super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY.get());
-        this.chestType = chestType;
-
-        registerMaterialNameRetriever();
+        this.woodType = chestType;
     }
 
     public MoreChestBlock(MapColor colour, SoundType sound, String chestType) {
         super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour).sound(sound), () -> McvBlockInit.MORE_CHEST_BLOCK_ENTITY.get());
-        this.chestType = chestType;
-
-        registerMaterialNameRetriever();
+        this.woodType = chestType;
     }
 
     public MoreChestBlock(BlockBehaviour.Properties properties, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier, String chestType) {
         super(properties, supplier);
-        this.chestType = chestType;
-
-        registerMaterialNameRetriever();
+        this.woodType = chestType;
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public @NotNull BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new MoreChestBlockEntity(pos, state);
-    }
-
-    protected void registerMaterialNameRetriever() {
-        NAME_RETRIEVER = new DoubleBlockCombiner.Combiner<>() {
-            public Optional<MenuProvider> acceptDouble(ChestBlockEntity chestBlockEntity, ChestBlockEntity chestBlockEntity2) {
-                final Container container = new CompoundContainer(chestBlockEntity, chestBlockEntity2);
-                return Optional.of(new MenuProvider() {
-                    @Nullable
-                    public AbstractContainerMenu createMenu(int p_51622_, Inventory p_51623_, Player p_51624_) {
-                        if (chestBlockEntity.canOpen(p_51624_) && chestBlockEntity2.canOpen(p_51624_)) {
-                            chestBlockEntity.unpackLootTable(p_51623_.player);
-                            chestBlockEntity2.unpackLootTable(p_51623_.player);
-                            return ChestMenu.sixRows(p_51622_, p_51623_, container);
-                        } else {
-                            return null;
-                        }
-                    }
-
-                    public Component getDisplayName() {
-                        if (chestBlockEntity.hasCustomName()) {
-                            return chestBlockEntity.getDisplayName();
-                        } else {
-                            return chestBlockEntity2.hasCustomName() ? chestBlockEntity2.getDisplayName() :
-                                    Component.translatable("container.lolmcv." + chestType + "_chestDouble");
-                        }
-                    }
-                });
-            }
-
-            public Optional<MenuProvider> acceptSingle(ChestBlockEntity chestBlockEntity) {
-                return Optional.of(chestBlockEntity);
-            }
-
-            public Optional<MenuProvider> acceptNone() {
-                return Optional.empty();
-            }
-        };
     }
 
     @Override

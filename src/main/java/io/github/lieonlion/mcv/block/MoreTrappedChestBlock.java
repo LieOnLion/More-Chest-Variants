@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
+import org.jetbrains.annotations.NotNull;
 
 public class MoreTrappedChestBlock extends MoreChestBlock {
     public final String chestType;
@@ -22,15 +23,11 @@ public class MoreTrappedChestBlock extends MoreChestBlock {
     public MoreTrappedChestBlock(MapColor colour, String chestType) {
         super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour), () -> McvBlockInit.MORE_TRAPPED_CHEST_BLOCK_ENTITY.get(), chestType);
         this.chestType = chestType;
-
-        registerMaterialNameRetriever();
     }
 
     public MoreTrappedChestBlock(MapColor colour, SoundType sound, String chestType) {
         super(Properties.ofFullCopy(Blocks.CHEST).mapColor(colour).sound(sound), () -> McvBlockInit.MORE_TRAPPED_CHEST_BLOCK_ENTITY.get(), chestType);
         this.chestType = chestType;
-
-        registerMaterialNameRetriever();
     }
 
     protected Stat<ResourceLocation> getOpenChestStat() {
@@ -50,7 +47,7 @@ public class MoreTrappedChestBlock extends MoreChestBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public @NotNull BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new MoreTrappedChestBlockEntity(pos, state);
     }
 }

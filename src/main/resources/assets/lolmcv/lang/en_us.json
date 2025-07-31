@@ -43,5 +43,7 @@
   "container.lolmcv.crimson_chest": "Crimson Chest",
   "container.lolmcv.crimson_chestDouble": "Large Crimson Chest",
   "container.lolmcv.warped_chest": "Warped Chest",
-  "container.lolmcv.warped_chestDouble": "Large Warped Chest"
+  "container.lolmcv.warped_chestDouble": "Large Warped Chest",
+
+  "container.tester": "Tester"
 }
