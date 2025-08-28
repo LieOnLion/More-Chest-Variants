@@ -1,0 +1,50 @@
+plugins {
+    id 'multiloader-loader'
+    id 'fabric-loom'
+}
+
+fabricApi {
+    configureDataGeneration {
+        client = true
+    }
+}
+
+repositories {
+    maven { url = "https://api.modrinth.com/maven" } // Quad, Sodium
+    maven { url = "https://maven.terraformersmc.com/" } // ModMenu
+    maven { url = 'https://maven.isxander.dev/releases' } // YACL
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+    }
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    modLocalRuntime "maven.modrinth:quad:${quad_version}+${quad_minecraft_version}-Fabric"
+    modLocalRuntime "maven.modrinth:sodium:mc${sodium_minecraft_version}-${sodium_version}-fabric"
+    modImplementation "com.terraformersmc:modmenu:${modmenu_version}"
+
+    modImplementation "dev.isxander:yet-another-config-lib:${yacl_version}-fabric"
+}
+
+loom {
+    def aw = project(':common').file("src/main/resources/${mod_id}.accesswidener")
+    if (aw.exists()) {
+        accessWidenerPath.set(aw)
+    }
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
+    runs {
+        client {
+            client()
+            setConfigName('Fabric Client')
+            ideConfigGenerated(true)
+            runDir('runs/client')
+        }
+    }
+}

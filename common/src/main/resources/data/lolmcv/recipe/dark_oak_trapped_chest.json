@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "trapped_chest",
+  "ingredients": [
+    "lolmcv:dark_oak_chest",
+    "minecraft:tripwire_hook"
+  ],
+  "result": {
+    "count": 1,
+    "id": "lolmcv:dark_oak_trapped_chest"
+  }
+}

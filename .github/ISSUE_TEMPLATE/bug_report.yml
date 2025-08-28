@@ -1,0 +1,95 @@
+name: Bug report
+description: Create a report to help us improve
+labels: ["bug"]
+title: "[BUG]: "
+body:
+  - type: dropdown
+    id: server-only-issue
+    attributes:
+      label: Does this only occur on a dedicated server?
+      description: i.e. on a local singleplayer server, the issue doesn't happen.
+      options:
+        - Unsure
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: input
+    id: mod-version
+    attributes:
+      label: Mod Version
+      description: What version of the Mod is installed?
+      placeholder: e.g. 1.5.11 (this is from More Chest Variants, other mods may be lower)
+    validations:
+      required: true
+  - type: input
+    id: mc-version
+    attributes:
+      label: Minecraft Version
+      description: What version of Minecraft are you playing?
+      placeholder: e.g. 1.20.1
+    validations:
+      required: true
+  - type: dropdown
+    id: mod-loader
+    attributes:
+      label: Minecraft Mod Loader
+      description: What Mod loader are you using?
+      options:
+        - Forge
+        - NeoForge
+        - Fabric
+        - Quilt (not officially supported)
+    validations:
+      required: true
+  - type: input
+    id: mod-loader-version
+    attributes:
+      label: Mod Loader Version
+      description: What Mod Loader Version are you running?
+      placeholder: e.g. (Fabric) v0.16.10
+    validations:
+      required: false
+  - type: textarea
+    id: extra-mods
+    attributes:
+      label: Extra Mods You are Using
+      description: Add any extra mods that you think might be contributing to the issue.
+      placeholder: e.g. Fabric API - v0.92.3
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Try to describe in detail the problem you're running into. If applicable, add screenshots to help explain your problem.
+      placeholder: e.g. When I do X, Y happens instead of Z
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Please provide a guide to reproduce the issue you have run into.
+      placeholder: |
+        1. Have (example) mod installed.
+        2. Try to have the two mods to intereact.
+        3. The game freezes and crashes.
+    validations:
+      required: true
+  - type: input
+    id: crash-report
+    attributes:
+      label: Minecraft Crash Report
+      description: Upload the crash report (or the log) to this site and send the link here - https://mclo.gs/
+      placeholder: https://mclo.gs/....
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please review the following checklist before submitting your issue.
+      options:
+        - label: I have searched if someone has submitted a similar issue before and there weren't any. (Also check closed issues)
+          required: true

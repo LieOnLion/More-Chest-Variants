@@ -1,0 +1,45 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev'
+}
+
+repositories {
+    maven { url = "https://api.modrinth.com/maven" } // Quad, Sodium
+    maven { url = 'https://maven.isxander.dev/releases' } // YACL
+}
+
+dependencies {
+    implementation "maven.modrinth:quad:${quad_version}+${quad_minecraft_version}-Neo"
+//    implementation "maven.modrinth:sodium:mc${sodium_minecraft_version}-${sodium_version}-neoforge"
+
+    compileOnly "dev.isxander:yet-another-config-lib:${yacl_version}-neoforge"
+}
+
+neoForge {
+    version = neoforge_version
+    // Automatically enable neoforge AccessTransformers if the file exists
+    def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+    runs {
+        configureEach {
+            systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})" // Unify the run config names with fabric
+        }
+        client {
+            client()
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }

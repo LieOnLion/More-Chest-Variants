@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chest",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": "minecraft:dark_oak_planks"
+  },
+  "result": {
+    "count": 1,
+    "id": "lolmcv:dark_oak_chest"
+  }
+}

@@ -1,0 +1,42 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}",
+    "name": "${mod_name}",
+    "description": "${mod_description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "homepage": "${mod_link_homepage}",
+        "sources": "${mod_link_sources}",
+        "issues": "${mod_link_issues}"
+    },
+    "license": "${mod_license}",
+    "icon": "logo.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "dev.lieonlion.mcv.FabricMoreChestVariants"
+        ],
+        "client": [
+            "dev.lieonlion.mcv.client.FabricMoreChestVariantsClient"
+        ],
+        "modmenu": [
+            "dev.lieonlion.mcv.integration.FabricModMenuIntegration"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "minecraft": "${minecraft_fabric_version_range}",
+        "java": ">=${java_version}"
+    },
+    "recommends": {
+        "yet_another_config_lib_v3": "*"
+    }
+}
+  

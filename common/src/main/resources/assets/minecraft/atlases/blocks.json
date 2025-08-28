@@ -1,0 +1,15 @@
+{
+  "replace": "false",
+  "sources": [
+    {
+      "type": "directory",
+      "source": "entity/chest",
+      "prefix": "entity/chest/"
+    },
+    {
+      "type": "directory",
+      "source": "entity/chest/trapped",
+      "prefix": "entity/chest/trapped/"
+    }
+  ]
+}
