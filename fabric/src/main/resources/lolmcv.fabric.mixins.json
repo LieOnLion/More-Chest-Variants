@@ -4,7 +4,9 @@
   "package": "dev.lieonlion.mcv.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "FabricCreativeModeTabsMixin"
+  ],
   "client": [
     "client.FabricChestRendererMixin"
   ],
