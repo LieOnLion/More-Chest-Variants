@@ -29,14 +29,14 @@ public class NeoForgeMoreChestVariants {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         var variantChestEntities = List.of(
-                NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY.get(),
-                NeoForgeMoreChestVariantsBlocks.MORE_TRAPPED_CHEST_BLOCK_ENTITY.get()
+            NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY.get(),
+            NeoForgeMoreChestVariantsBlocks.MORE_TRAPPED_CHEST_BLOCK_ENTITY.get()
         );
 
         for (var type: variantChestEntities) {
             event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, type,
                 ((be, direction) -> new InvWrapper(
-                        Objects.requireNonNull(ChestBlock.getContainer(be.getMoreChestBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
+                    Objects.requireNonNull(ChestBlock.getContainer(be.getMoreChestBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
                 )
             );
         }
