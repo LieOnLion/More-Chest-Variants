@@ -30,7 +30,7 @@ public class FabricChestRendererMixin {
     @WrapOperation(method = "render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;IILnet/minecraft/world/phys/Vec3;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/Sheets;chooseMaterial(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/level/block/state/properties/ChestType;Z)Lnet/minecraft/client/resources/model/Material;"))
     private Material lolmcv$getChestMaterial(BlockEntity blockEntity, ChestType type, boolean xmas, Operation<Material> original) {
         if (!xmas && blockEntity.getBlockState().getBlock() instanceof MoreChestBlock moreChestBlock) {
-            if (lolmcv$starwars) {
+            if (lolmcv$starwars && MoreChestVariants.CONFIG.displayStarWarsTextures()) {
                 return lolmcv$chooseMaterial(type, "starwars");
             } else if (moreChestBlock instanceof MoreTrappedChestBlock) {
                 return lolmcv$chooseMaterial(type, "trapped/" + moreChestBlock.woodType);
