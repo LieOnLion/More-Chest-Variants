@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.CompoundContainer;
 import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
@@ -60,7 +61,7 @@ public class MoreChestBlock extends ChestBlock {
     public final String woodType;
 
     public MoreChestBlock(Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType, Properties properties, String woodType) {
-        super(blockEntityType, properties);
+        super(blockEntityType, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, properties);
         this.woodType = woodType;
     }
 
