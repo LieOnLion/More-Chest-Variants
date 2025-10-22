@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
 
 import java.util.List;
 import java.util.Objects;
@@ -34,8 +34,8 @@ public class NeoForgeMoreChestVariants {
         );
 
         for (var type: variantChestEntities) {
-            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, type,
-                ((be, direction) -> new InvWrapper(
+            event.registerBlockEntity(Capabilities.Item.BLOCK, type,
+                ((be, direction) -> VanillaContainerWrapper.of(
                     Objects.requireNonNull(ChestBlock.getContainer(be.getMoreChestBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
                 )
             );

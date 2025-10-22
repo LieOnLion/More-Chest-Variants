@@ -8,6 +8,7 @@
     "FabricCreativeModeTabsMixin"
   ],
   "client": [
+    "client.FabricChestRenderStateMixin",
     "client.FabricChestRendererMixin"
   ],
   "server": [],
