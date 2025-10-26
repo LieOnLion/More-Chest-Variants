@@ -40,7 +40,7 @@ Do you want your pets to carry arround little chests? Well now with [Chested Com
 
 More Chest Variants has now hit 1 years old on 4th May 2024. In this 1st year, it has reached 282k downloads on Curseforge and 93k on Modrinth, with a total of **375k** downloads :O. With also getting in [AOF7](https://www.curseforge.com/minecraft/modpacks/all-of-fabric-7).
 
-## MultiLoader - Minecraft 1.21.8
+## MultiLoader - Minecraft 1.21.10
 
 ### Supported Loaders
 
