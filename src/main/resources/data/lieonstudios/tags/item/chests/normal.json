@@ -11,6 +11,10 @@
     "lolmcv:warped_chest",
     "lolmcv:mangrove_chest",
     "lolmcv:bamboo_chest",
-    "lolmcv:cherry_chest"
+    "lolmcv:cherry_chest",
+    {
+      "id": "#lieonstudio:chests/normal",
+      "required": false
+    }
   ]
 }

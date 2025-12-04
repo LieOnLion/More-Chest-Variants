@@ -4,8 +4,6 @@ import io.github.lieonlion.mcv.block.MoreChestBlock;
 import io.github.lieonlion.mcv.init.McvBlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.Container;
-import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,16 +25,5 @@ public class MoreChestBlockEntity extends ChestBlockEntity {
 
     public MoreChestBlock getBlock() {
         return (MoreChestBlock) getBlockState().getBlock();
-    }
-
-    public Container getContainer() {
-        assert this.getLevel() != null;
-        return ChestBlock.getContainer(
-            this.getBlock(),
-            this.getBlockState(),
-            this.getLevel(),
-            this.getBlockPos(),
-            false
-        );
     }
 }

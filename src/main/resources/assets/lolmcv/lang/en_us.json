@@ -45,5 +45,12 @@
   "container.lolmcv.warped_chest": "Warped Chest",
   "container.lolmcv.warped_chestDouble": "Large Warped Chest",
 
-  "container.tester": "Tester"
+  "tag.item.lieonstudios.chests.normal": "LieOn Studios Normal Chests",
+  "tag.item.lieonstudios.chests.trapped": "LieOn Studios Trapped Chests",
+  "tag.item.lieonstudios.chests.wooden": "LieOn Studios Wooden Chests",
+
+  "lolmcv.config.title": "More Chest Variants",
+  "lolmcv.config.category.main": "Main Options",
+  "lolmcv.config.option.displayStarWarsTextures.name": "Display Star Wars Textures",
+  "lolmcv.config.option.displayStarWarsTextures.description": "Display the special Star Wars textures on variant chests with May the Fourth be with You! (3rd - 5th).\n\nThis is similar to the Christmas textures."
 }

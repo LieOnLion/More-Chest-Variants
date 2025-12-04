@@ -9,13 +9,11 @@ displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''
 logoFile="logo.png"
-displayURL="https://lieonlion.github.io/LieOnLion/"
+displayURL="https://lieonlion.dev"
 issueTrackerURL="https://github.com/LieOnLion/More-Chest-Variants/issues"
 
 [[mixins]]
     config="${mod_id}.mixins.json"
-[[mixins]]
-    config="${mod_id}.mixins.client.json"
 
 [[dependencies.${mod_id}]]
     modId="neoforge"
@@ -23,17 +21,21 @@ issueTrackerURL="https://github.com/LieOnLion/More-Chest-Variants/issues"
     versionRange="${neo_version_range}"
     ordering="AFTER"
     side="BOTH"
-
 [[dependencies.${mod_id}]]
     modId="minecraft"
     type="required"
     versionRange="${minecraft_version_range}"
     ordering="AFTER"
     side="BOTH"
-
 [[dependencies.${mod_id}]]
     modId="quad"
     type="required"
     versionRange="${quad_version}"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId = "yet_another_config_lib_v3"
+    type="optional"
+    versionRange = "*"
+    ordering = "NONE"
+    side = "CLIENT"

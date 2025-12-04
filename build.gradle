@@ -53,7 +53,14 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
-dependencies {}
+repositories {
+    maven { url = 'https://maven.isxander.dev/releases' } // YACL
+    maven { url = 'https://thedarkcolour.github.io/KotlinForForge/' } // KotlinForForge
+}
+
+dependencies {
+    implementation "dev.isxander:yet-another-config-lib:${yacl_version}-neoforge"
+}
 
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [

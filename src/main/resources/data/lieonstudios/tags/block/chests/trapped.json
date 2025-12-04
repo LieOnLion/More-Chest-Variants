@@ -11,6 +11,10 @@
     "lolmcv:warped_trapped_chest",
     "lolmcv:mangrove_trapped_chest",
     "lolmcv:bamboo_trapped_chest",
-    "lolmcv:cherry_trapped_chest"
+    "lolmcv:cherry_trapped_chest",
+    {
+      "id": "#lieonstudio:chests/trapped",
+      "required": false
+    }
   ]
 }
