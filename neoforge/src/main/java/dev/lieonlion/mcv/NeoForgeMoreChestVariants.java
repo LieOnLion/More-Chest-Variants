@@ -28,17 +28,15 @@ public class NeoForgeMoreChestVariants {
 
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        var variantChestEntities = List.of(
-            NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY.get(),
-            NeoForgeMoreChestVariantsBlocks.MORE_TRAPPED_CHEST_BLOCK_ENTITY.get()
+        event.registerBlockEntity(Capabilities.Item.BLOCK, NeoForgeMoreChestVariantsBlocks.MORE_CHEST_BLOCK_ENTITY.get(),
+            ((be, direction) -> VanillaContainerWrapper.of(
+                Objects.requireNonNull(ChestBlock.getContainer(be.getMoreChestBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
+            )
         );
-
-        for (var type: variantChestEntities) {
-            event.registerBlockEntity(Capabilities.Item.BLOCK, type,
-                ((be, direction) -> VanillaContainerWrapper.of(
-                    Objects.requireNonNull(ChestBlock.getContainer(be.getMoreChestBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
-                )
-            );
-        }
+        event.registerBlockEntity(Capabilities.Item.BLOCK, NeoForgeMoreChestVariantsBlocks.MORE_TRAPPED_CHEST_BLOCK_ENTITY.get(),
+            ((be, direction) -> VanillaContainerWrapper.of(
+                Objects.requireNonNull(ChestBlock.getContainer(be.getMoreChestBlock(), be.getBlockState(), Objects.requireNonNull(be.getLevel()), be.getBlockPos(), true)))
+            )
+        );
     }
 }

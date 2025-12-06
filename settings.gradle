@@ -11,6 +11,7 @@ pluginManagement {
             }
             filter {
                 includeGroupAndSubgroups('net.fabricmc')
+                includeGroup('net.fabricmc.unpick')
                 includeGroup('fabric-loom')
             }
         }
@@ -33,7 +34,7 @@ plugins {
 }
 
 // This should match the folder name of the project, or else IDEA may complain (see https://youtrack.jetbrains.com/issue/IDEA-317606)
-rootProject.name = 'more_chest_variants_1.21.8'
+rootProject.name = 'more_chest_variants_1.21.10'
 include('common')
 include('fabric')
 include('neoforge')
