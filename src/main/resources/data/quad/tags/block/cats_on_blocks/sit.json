@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     {
-      "id": "#lieonstudio:chests/normal",
+      "id": "#lieonstudios:chests/normal",
       "required": false
     }
   ]
