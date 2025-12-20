@@ -4,8 +4,8 @@ import dev.lieonlion.mcv.MoreChestVariants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stat;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
@@ -33,7 +33,7 @@ public class MoreTrappedChestBlock extends MoreChestBlock {
         this(blockEntityType, Properties.ofFullCopy(Blocks.CHEST).mapColor(colour).sound(sound), woodType);
     }
 
-    protected @NotNull Stat<ResourceLocation> getOpenChestStat() {
+    protected @NotNull Stat<@NotNull Identifier> getOpenChestStat() {
         return Stats.CUSTOM.get(Stats.TRIGGER_TRAPPED_CHEST);
     }
 

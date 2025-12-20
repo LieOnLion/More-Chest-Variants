@@ -2,7 +2,7 @@ package dev.lieonlion.mcv;
 
 import dev.lieonlion.mcv.compatibility.YACLCompatibility;
 import dev.lieonlion.mcv.config.IMoreChestVariantsConfig;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +17,7 @@ public class MoreChestVariants {
         CONFIG = YACLCompatibility.loadConfig();
     }
 
-    public static ResourceLocation location(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier location(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

@@ -9,8 +9,8 @@ repositories {
 }
 
 dependencies {
-    implementation "maven.modrinth:quad:${quad_version}+${quad_minecraft_version}-Neo"
-//    implementation "maven.modrinth:sodium:mc${sodium_minecraft_version}-${sodium_version}-neoforge"
+    implementation "maven.modrinth:quad:${quad_version}-Neo"
+//    implementation "maven.modrinth:sodium:mc${sodium_version}-neoforge"
 
     implementation "dev.isxander:yet-another-config-lib:${yacl_version}-neoforge"
 }

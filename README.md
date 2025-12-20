@@ -18,7 +18,7 @@
 ### Adding the much-needed More Chest Variants.
 Fill your builds with colourful storage now each wood type now has its own chest. Unique designs now to not let the default chest ruin your style.
 
-![](https://raw.githubusercontent.com/LieOnLion/LieOnLion/main/images/banners/mcv/vanillaChests.png)
+![chest-set](https://lieonstudios.github.io/assets/v3/project/mod/more-chest-variants/banner/chest-set.png)
 
 ### Adding 11 new chests to minecraft in the most vanilla way possible.
 
@@ -40,7 +40,7 @@ Do you want your pets to carry arround little chests? Well now with [Chested Com
 
 More Chest Variants has now hit 1 years old on 4th May 2024. In this 1st year, it has reached 282k downloads on Curseforge and 93k on Modrinth, with a total of **375k** downloads :O. With also getting in [AOF7](https://www.curseforge.com/minecraft/modpacks/all-of-fabric-7).
 
-## MultiLoader - Minecraft 1.21.10
+## MultiLoader - Minecraft 1.21.11
 
 ### Supported Loaders
 

@@ -24,8 +24,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
-    modLocalRuntime "maven.modrinth:quad:${quad_version}+${quad_minecraft_version}-Fabric"
-    modLocalRuntime "maven.modrinth:sodium:mc${sodium_minecraft_version}-${sodium_version}-fabric"
+    modLocalRuntime "maven.modrinth:quad:${quad_version}-Fabric"
+    modLocalRuntime "maven.modrinth:sodium:mc${sodium_version}-fabric"
     modImplementation "com.terraformersmc:modmenu:${modmenu_version}"
 
     modImplementation "dev.isxander:yet-another-config-lib:${yacl_version}-fabric"
