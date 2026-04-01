@@ -7,16 +7,13 @@ import dev.lieonlion.mcv.MoreChestVariants;
 import dev.lieonlion.mcv.access.ChestRenderStateAccess;
 import dev.lieonlion.mcv.block.MoreChestBlock;
 import dev.lieonlion.mcv.block.MoreTrappedChestBlock;
-import dev.lieonlion.mcv.block.entity.MoreChestBlockEntity;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.blockentity.state.ChestRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.world.level.block.TrappedChestBlock;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.client.resources.model.sprite.SpriteId;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import net.minecraft.world.phys.Vec3;
@@ -39,15 +36,15 @@ public class FabricChestRendererMixin {
         return (calendar.get(2) + 1 == 5 && calendar.get(5) >= 3 && calendar.get(5) <= 5);
     }
 
-    @WrapOperation(method = "submit(Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/CameraRenderState;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/Sheets;chooseMaterial(Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState$ChestMaterialType;Lnet/minecraft/world/level/block/state/properties/ChestType;)Lnet/minecraft/client/resources/model/Material;"))
-    private Material lolmcv$getChestMaterial(ChestRenderState.ChestMaterialType chestMaterialType, ChestType type, Operation<Material> original, @Local ChestRenderState chestRenderState) {
+    @WrapOperation(method = "submit(Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/Sheets;chooseSprite(Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState$ChestMaterialType;Lnet/minecraft/world/level/block/state/properties/ChestType;)Lnet/minecraft/client/resources/model/sprite/SpriteId;"))
+    private SpriteId lolmcv$getChestMaterial(ChestRenderState.ChestMaterialType materialType, ChestType type, Operation<SpriteId> original, @Local ChestRenderState chestRenderState) {
         if (!ChestRenderer.xmasTextures() && chestRenderState instanceof ChestRenderStateAccess moreChestBlock && moreChestBlock.lolmcv$isMoreChest()) {
             if (lolmcv$starwars && MoreChestVariants.CONFIG.displayStarWarsTextures()) {
                 return lolmcv$chooseMaterial(type, "starwars");
             } else if (moreChestBlock.lolmcv$isTrapped()) {
                 return lolmcv$chooseMaterial(type, "trapped/" + moreChestBlock.lolmcv$woodVariant());
             } return lolmcv$chooseMaterial(type, moreChestBlock.lolmcv$woodVariant());
-        } return original.call(chestMaterialType, type);
+        } return original.call(materialType, type);
     }
 
     @Inject(method = "extractRenderState(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/client/renderer/blockentity/state/ChestRenderState;FLnet/minecraft/world/phys/Vec3;Lnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;)V", at = @At(value = "RETURN"))
@@ -61,12 +58,12 @@ public class FabricChestRendererMixin {
     }
 
     @Unique
-    private static Material lolmcv$getChestPath(String path) {
-        return new Material(Sheets.CHEST_SHEET, MoreChestVariants.location("entity/chest/" + path));
+    private static SpriteId lolmcv$getChestPath(String path) {
+        return Sheets.CHEST_MAPPER.apply(MoreChestVariants.location(path));
     }
 
     @Unique
-    private static Material lolmcv$chooseMaterial(ChestType type, String path) {
+    private static SpriteId lolmcv$chooseMaterial(ChestType type, String path) {
         return switch (type) {
             case LEFT -> lolmcv$getChestPath(path + "_left");
             case RIGHT -> lolmcv$getChestPath(path + "_right");

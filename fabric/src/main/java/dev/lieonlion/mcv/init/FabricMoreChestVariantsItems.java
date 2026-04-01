@@ -2,7 +2,7 @@ package dev.lieonlion.mcv.init;
 
 import dev.lieonlion.mcv.MoreChestVariants;
 import dev.lieonlion.mcv.block.MoreChestBlock;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -66,8 +66,8 @@ public class FabricMoreChestVariantsItems {
         Registry.register(BuiltInRegistries.ITEM, MoreChestVariants.location(((MoreChestBlock) chest.getBlock()).woodType + "_chest"), chest);
         Registry.register(BuiltInRegistries.ITEM, MoreChestVariants.location(((MoreChestBlock) trappedChest.getBlock()).woodType + "_trapped_chest"), trappedChest);
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.addAfter(chestAfter, chest));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> entries.addAfter(chestAfter,chest));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> entries.addAfter(trappedAfter, trappedChest));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.insertAfter(chestAfter, chest));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> entries.insertAfter(chestAfter,chest));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(entries -> entries.insertAfter(trappedAfter, trappedChest));
     }
 }
